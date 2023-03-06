@@ -1,0 +1,214 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a test project to demonstrate API Documentation",
+        "version": "1.0.0",
+        "title": "TEST API",
+        "contact": {
+            "email": "shubhrant999@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths": {
+        "/getUserById/{userid}": {
+            "get": {
+                "summary": "Get User by user Id",
+                "description": "Get User by user Id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "description": "The User Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/getUserResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getUsersAlbum/{userid}": {
+            "get": {
+                "summary": "Get User and Albums by user Id",
+                "description": "Get User and Albums by user Id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "description": "The User Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/getUsersAlbumResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getAlbumwithImage/{userid}": {
+            "get": {
+                "summary": "Get Albums and Images by user Id",
+                "description": "Get Albums and Images by user Id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "description": "The User Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page number",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The no of item per page",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/getAlbumwithImageResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "getUserResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address_geo_lat": {
+                    "type": "string"
+                },
+                "address_geo_lng": {
+                    "type": "string"
+                }
+            }
+        },
+        "getUsersAlbumResponse": {
+            "type": "object",
+            "properties": {
+                "Username": {
+                    "type": "string"
+                },
+                "Useremail": {
+                    "type": "string"
+                },
+                "AlbumId": {
+                    "type": "integer"
+                },
+                "AlbumTitle": {
+                    "type": "string"
+                }
+            }
+        },
+            "getAlbumwithImageResponse": {
+            "type": "object",
+            "properties": {
+                "albumId": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "userEmail": {
+                    "type": "integer"
+                },
+                "AlbumTitle": {
+                    "type": "string"
+                },
+                "imageTitle": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
