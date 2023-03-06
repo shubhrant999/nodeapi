@@ -1,0 +1,13 @@
+node_modules
+node_modules/
+node_modules\
+
+*.env
+*.logs*
+*.log*
+*.csv
+*-audit.json*
+package-lock.json
+
+database.sqli
+entities_sample.sql
